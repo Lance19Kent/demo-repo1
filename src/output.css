@@ -1,4 +1,5 @@
 /*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
+@layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
@@ -6,6 +7,10 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-amber-200: oklch(92.4% 0.12 95.746);
+    --spacing: 0.25rem;
+    --text-3xl: 1.875rem;
+    --text-3xl--line-height: calc(2.25 / 1.875);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
   }
@@ -158,4 +163,53 @@
     display: none !important;
   }
 }
-@layer utilities;
+@layer utilities {
+  .table {
+    display: table;
+  }
+  .border-collapse {
+    border-collapse: collapse;
+  }
+  .resize {
+    resize: both;
+  }
+  .border {
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+  }
+  .pl-10 {
+    padding-left: calc(var(--spacing) * 10);
+  }
+  .text-3xl {
+    font-size: var(--text-3xl);
+    line-height: var(--tw-leading, var(--text-3xl--line-height));
+  }
+  .text-amber-200 {
+    color: var(--color-amber-200);
+  }
+  .underline {
+    text-decoration-line: underline;
+  }
+  .outline {
+    outline-style: var(--tw-outline-style);
+    outline-width: 1px;
+  }
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@property --tw-outline-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-border-style: solid;
+      --tw-outline-style: solid;
+    }
+  }
+}
