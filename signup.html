@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Sign Up</title>
+    <link href="src/output.css" rel="stylesheet">
+    <script src="src/output.js"></script>
+</head>
+
+<body class="bg-gray-100">
+    <div class="min-h-screen flex items-center justify-center px-4 py-8">
+        <div class="max-w-md w-full">
+            <!-- Logo -->
+            <div class="text-center mb-4 sm:mb-8">
+                <h1 class="text-blue-600 text-4xl sm:text-5xl font-bold mb-2 sm:mb-3">facebook</h1>
+                <p class="text-lg sm:text-2xl px-2">Create a new account</p>
+                <p class="text-sm sm:text-base text-gray-600 mt-1">It's quick and easy.</p>
+            </div>
+
+            <!-- Sign Up Form -->
+            <div class="bg-white rounded-lg shadow-md p-4 sm:p-6">
+                <form action="#" class="space-y-3 sm:space-y-4">
+                    <div class="grid grid-cols-2 gap-2 sm:gap-3">
+                        <input type="text" placeholder="First name"
+                            class="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base" />
+                        <input type="text" placeholder="Last name"
+                            class="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base" />
+                    </div>
+                    <input type="text" placeholder="Email or phone number"
+                        class="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base" />
+                    <input type="password" placeholder="New password"
+                        class="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base" />
+                    
+                    <div>
+                        <label class="block text-xs text-gray-600 mb-1">Birthday</label>
+                        <div class="grid grid-cols-3 gap-2">
+                            <select class="w-full px-2 py-2 sm:py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base">
+                                <option>Month</option>
+                                <option>Jan</option>
+                                <option>Feb</option>
+                                <option>Mar</option>
+                                <option>Apr</option>
+                                <option>May</option>
+                                <option>Jun</option>
+                                <option>Jul</option>
+                                <option>Aug</option>
+                                <option>Sep</option>
+                                <option>Oct</option>
+                                <option>Nov</option>
+                                <option>Dec</option>
+                            </select>
+                            <select class="w-full px-2 py-2 sm:py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base">
+                                <option>Day</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <!-- Add more days as needed -->
+                            </select>
+                            <select class="w-full px-2 py-2 sm:py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base">
+                                <option>Year</option>
+                                <option>2025</option>
+                                <option>2024</option>
+                                <option>2023</option>
+                                <!-- Add more years as needed -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs text-gray-600 mb-1">Gender</label>
+                        <div class="grid grid-cols-3 gap-2">
+                            <label class="border border-gray-300 rounded-md px-2 py-2 sm:py-3 flex items-center justify-between cursor-pointer hover:bg-gray-50">
+                                <span class="text-sm sm:text-base">Female</span>
+                                <input type="radio" name="gender" value="female" class="text-blue-600">
+                            </label>
+                            <label class="border border-gray-300 rounded-md px-2 py-2 sm:py-3 flex items-center justify-between cursor-pointer hover:bg-gray-50">
+                                <span class="text-sm sm:text-base">Male</span>
+                                <input type="radio" name="gender" value="male" class="text-blue-600">
+                            </label>
+                            <label class="border border-gray-300 rounded-md px-2 py-2 sm:py-3 flex items-center justify-between cursor-pointer hover:bg-gray-50">
+                                <span class="text-sm sm:text-base">Custom</span>
+                                <input type="radio" name="gender" value="custom" class="text-blue-600">
+                            </label>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-gray-600">
+                        By clicking Sign Up, you agree to our Terms, Privacy Policy and Cookies Policy.
+                    </p>
+
+                    <button type="submit"
+                        class="mx-auto block bg-green-500 text-white font-bold px-12 py-2 sm:py-3 rounded-md hover:bg-green-600 transition text-sm sm:text-base">
+                        Sign Up
+                    </button>
+                </form>
+
+                <hr class="my-4 sm:my-5">
+
+                <p class="text-center">
+                    <a href="index.html" class="text-blue-600 text-sm hover:underline">Already have an account?</a>
+                </p>
+            </div>
+
+            <p class="text-center mt-4 sm:mt-6 text-xs sm:text-sm px-2">
+                <a href="#" class="font-bold hover:underline">Create a Page</a> for a celebrity, brand or business.
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

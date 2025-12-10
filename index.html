@@ -1,15 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Facebook Login</title>
     <link href="src/output.css" rel="stylesheet">
     <script src="src/output.js"></script>
 </head>
-<body>
-    <form action="#" class="form">
-        
-    </form>
+
+<body class="bg-gray-100">
+    <div class="min-h-screen flex items-center justify-center px-4 py-8">
+        <div class="max-w-md w-full">
+            <!-- Logo -->
+            <div class="text-center mb-4 sm:mb-8">
+                <h1 class="text-blue-600 text-4xl sm:text-5xl font-bold mb-2 sm:mb-3">facebook</h1>
+                <p class="text-lg sm:text-2xl px-2">Connect with friends and the world around you on Facebook.</p>
+            </div>
+
+            <!-- Login Form -->
+            <div class="bg-white rounded-lg shadow-md p-4 sm:p-6">
+                <form action="#" class="space-y-3 sm:space-y-4">
+                    <input type="text" placeholder="Email or phone number"
+                        class="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base" />
+                    <input type="password" placeholder="Password"
+                        class="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base" />
+                    <button type="submit"
+                        class="w-full bg-blue-600 text-white font-bold py-2 sm:py-3 rounded-md hover:bg-blue-700 transition text-sm sm:text-base">
+                        Log In
+                    </button>
+                </form>
+
+                <a href="#" class="block text-center text-blue-600 text-xs sm:text-sm mt-3 sm:mt-4 hover:underline">
+                    Forgot password?
+                </a>
+
+                <hr class="my-4 sm:my-5">
+
+                <button onclick="window.location.href='signup.html'"
+                    class="mx-auto block bg-green-500 text-white font-bold px-4 py-2 sm:py-3 rounded-md hover:bg-green-600 transition text-sm sm:text-base">
+                    Create new account
+                </button>
+            </div>
+
+            <p class="text-center mt-4 sm:mt-6 text-xs sm:text-sm px-2"></p>
+            <a href="#" class="font-bold hover:underline">Create a Page</a> for a celebrity, brand or business.
+            </p>
+        </div>
+    </div>
 </body>
+
 </html>
