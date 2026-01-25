@@ -1,4 +1,8 @@
-let num = 5;
-num &= 10;
+const person = {
+    name: "Lance",
+    age:22,
+    status:"single"
+}
+let name = "name";
 
-console.log(num);
+console.log(person.hasOwnProperty(name));
