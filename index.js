@@ -1,14 +1,9 @@
 const person = {
-    name: "Lance",
+    name:"Lance",
     age:22,
-    status:"single",
-    contact:{
-        phone:"09274330304",
-        email:{
-            personalEmail:"lancemagollado46@gmail.com",
-            schoolEmail:"lancemagollado@gmail.com"
-        }
+    hobbies: function(hobbies){
+        return `${this.name} likes to ${hobbies}`;
     }
 }
 
-console.log(person.contact.email.personalEmail);
+console.log(person.hobbies());
