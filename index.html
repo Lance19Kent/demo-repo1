@@ -1,53 +1,605 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html class="light" lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Facebook Login</title>
-    <link href="src/output.css" rel="stylesheet">
-    <script src="src/output.js"></script>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>PlantCam - Home</title>
+    <link href="assets/fonts/inter.css" rel="stylesheet" />
+    <link href="assets/fonts/material-symbols-outlined.css" rel="stylesheet" />
+    <style>
+        :root {
+            --color-primary: #006e28;
+            --color-primary-container: #34c759;
+            --color-secondary-container: #b9f474;
+            --color-tertiary: #9c413d;
+            --color-tertiary-container: #ff8e86;
+            --color-on-background: #131e14;
+            --color-on-surface-variant: #3d4a3c;
+            --color-outline-variant: #bccbb8;
+            --color-surface-low: #eaf7e7;
+            --color-surface-high: #deecdc;
+            --color-surface-highest: #d8e6d6;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .icon-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .botanical-shadow {
+            box-shadow: 0 8px 32px rgba(19, 30, 20, 0.06);
+        }
+
+        body {
+            min-height: max(884px, 100dvh);
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            color: var(--color-on-background);
+            padding-bottom: 96px;
+        }
+
+        .top-app-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            height: 64px;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+        }
+
+        .brand-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .brand-icon,
+        .brand-title {
+            color: var(--color-primary);
+        }
+
+        .brand-title {
+            margin: 0;
+            font-size: 1.125rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .top-menu-btn {
+            border: 0;
+            background: transparent;
+            color: rgba(19, 30, 20, 0.6);
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .top-menu-btn:active {
+            transform: scale(0.95);
+        }
+
+        .main-content {
+            width: 100%;
+            margin: 0 auto;
+            padding-left: 12px;
+            padding-right: 12px;
+            padding-top: 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+            padding-top: 16px;
+        }
+
+        .hero-copy {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .hero-title {
+            margin: 0;
+            font-size: 1.875rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--color-on-background);
+        }
+
+        .hero-subtitle {
+            margin: 0;
+            max-width: 280px;
+            color: var(--color-on-surface-variant);
+            font-size: 1.125rem;
+            line-height: 1.6;
+        }
+
+        .hero-art {
+            position: absolute;
+            top: -16px;
+            right: -48px;
+            width: 192px;
+            height: 192px;
+            opacity: 0.2;
+            transform: rotate(12deg);
+        }
+
+        .hero-art img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .action-section {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .scan-button {
+            width: 100%;
+            height: 80px;
+            border: 0;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            cursor: pointer;
+            color: #ffffff;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-container));
+            transition: transform 0.2s ease;
+        }
+
+        .scan-button:active,
+        .upload-button:active,
+        .nav-item:active {
+            transform: scale(0.98);
+        }
+
+        .scan-icon {
+            font-size: 1.875rem;
+        }
+
+        .scan-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .upload-button {
+            width: 100%;
+            height: 56px;
+            border: 0;
+            border-radius: 999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            background: var(--color-surface-highest);
+            color: var(--color-primary);
+            font-weight: 700;
+            transition: transform 0.2s ease;
+        }
+
+        .how-section {
+            background: rgba(234, 247, 231, 0.3);
+            border-radius: 32px;
+            padding: 24px;
+            border: 1px solid rgba(188, 203, 184, 0.2);
+        }
+
+        .section-title {
+            margin: 0 0 24px;
+            font-size: 1.25rem;
+            font-weight: 800;
+        }
+
+        .steps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 16px;
+        }
+
+        .step-icon {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+            border-radius: 16px;
+            background: rgba(0, 110, 40, 0.1);
+            display: grid;
+            place-items: center;
+            color: var(--color-primary);
+        }
+
+        .step-copy {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .step-heading {
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .step-note {
+            margin: 0;
+            color: var(--color-on-surface-variant);
+            font-size: 0.875rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .activity-card {
+            grid-column: span 2;
+            background: #ffffff;
+            border-radius: 24px;
+            border: 1px solid rgba(188, 203, 184, 0.15);
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .activity-meta {
+            margin: 0;
+            color: var(--color-on-surface-variant);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .activity-title {
+            margin: 4px 0 0;
+            font-size: 1.125rem;
+            font-weight: 700;
+        }
+
+        .activity-icon-wrap {
+            width: 48px;
+            height: 48px;
+            border-radius: 999px;
+            background: rgba(185, 244, 116, 0.3);
+            display: grid;
+            place-items: center;
+            color: var(--color-primary);
+        }
+
+        .secondary-card {
+            border-radius: 24px;
+            padding: 20px;
+            min-height: 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .secondary-card-low {
+            background: var(--color-surface-low);
+        }
+
+        .secondary-card-high {
+            background: var(--color-surface-highest);
+        }
+
+        .secondary-icon-wrap {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+        }
+
+        .secondary-icon-primary {
+            background: rgba(0, 110, 40, 0.1);
+            color: var(--color-primary);
+        }
+
+        .secondary-icon-tertiary {
+            background: rgba(255, 142, 134, 0.2);
+            color: var(--color-tertiary);
+        }
+
+        .secondary-card h3 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .secondary-card p {
+            margin: 4px 0 0;
+            font-size: 0.75rem;
+            color: var(--color-on-surface-variant);
+        }
+
+        .daily-section {
+            padding-bottom: 40px;
+        }
+
+        .daily-card {
+            position: relative;
+            width: 100%;
+            height: 224px;
+            border-radius: 24px;
+            overflow: hidden;
+        }
+
+        .daily-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .daily-card:hover .daily-image {
+            transform: scale(1.05);
+        }
+
+        .daily-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 24px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent 60%);
+        }
+
+        .daily-kicker {
+            margin: 0 0 4px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        .daily-heading {
+            margin: 0;
+            color: #ffffff;
+            font-size: 1.125rem;
+            font-weight: 700;
+            line-height: 1.35;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 50;
+            padding: 12px 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 24px 24px 0 0;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 -8px 32px rgba(19, 30, 20, 0.08);
+        }
+
+        .nav-item {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 16px;
+            border-radius: 16px;
+            color: rgba(19, 30, 20, 0.4);
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        .nav-item:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-item-active {
+            background: rgba(52, 199, 89, 0.1);
+            color: var(--color-primary);
+        }
+
+        .nav-label {
+            margin-top: 4px;
+            font-size: 10px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        @media (min-width: 768px) {
+            .main-content {
+                padding-left: 40px;
+                padding-right: 40px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .main-content {
+                width: calc(100% - 32px);
+            }
+
+            .hero-subtitle {
+                max-width: 240px;
+            }
+        }
+    </style>
 </head>
 
-<body class="bg-gray-100">
-    <div class="min-h-screen flex items-center justify-center px-4 py-8">
-        <div class="max-w-md w-full">
-            <!-- Logo -->
-            <div class="text-center mb-4 sm:mb-8">
-                <h1 class="text-blue-600 text-4xl sm:text-5xl font-bold mb-2 sm:mb-3">facebook</h1>
-                <p class="text-lg sm:text-2xl px-2">Connect with friends and the world around you on Facebook.</p>
-            </div>
-
-            <!-- Login Form -->
-            <div class="bg-white rounded-lg shadow-md p-4 sm:p-6">
-                <form action="#" class="space-y-3 sm:space-y-4">
-                    <input type="text" placeholder="Email or phone number"
-                        class="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base" />
-                    <input type="password" placeholder="Password"
-                        class="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base" />
-                    <button type="submit" onclick="alert()"
-                        class="w-full bg-blue-600 text-white font-bold py-2 sm:py-3 rounded-md hover:bg-blue-700 transition text-sm sm:text-base">
-                        Log In
-                    </button>
-                </form>
-
-                <a href="" class="block text-center text-blue-600 text-xs sm:text-sm mt-3 sm:mt-4 hover:underline">
-                    Forgot password?
-                </a>
-
-                <hr class="my-4 sm:my-5">
-
-                <button onclick="window.location.href='signup.html'"
-                    class="mx-auto block bg-green-500 text-white font-bold px-4 py-2 sm:py-3 rounded-md hover:bg-green-600 transition text-sm sm:text-base">
-                    Create new account
-                </button>
-            </div>
-
-            <p class="text-center mt-4 sm:mt-6 text-xs sm:text-sm px-2"></p>
-            <a href="#" class="font-bold hover:underline">Create a Page</a> for a celebrity, brand or business.
-            </p>
+<body>
+    <!-- TopAppBar -->
+    <header class="top-app-bar">
+        <div class="brand-wrap">
+            <span class="material-symbols-outlined brand-icon" data-icon="eco">eco</span>
+            <h1 class="brand-title">PlantCam</h1>
         </div>
-    </div>
+        <button class="top-menu-btn" type="button" aria-label="Open menu">
+            <span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+        </button>
+    </header>
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-copy">
+                <h2 class="hero-title">Hello, Plant Parent!</h2>
+                <p class="hero-subtitle">Identify plant diseases in seconds</p>
+            </div>
+            <div class="hero-art">
+                <img alt="Minimal plant illustration"
+                    data-alt="Minimalist clean studio shot of a vibrant green Swiss Cheese Plant leaf against a soft pastel neutral background"
+                    src="hero-leaf.jpg" />
+            </div>
+        </section>
+        <!-- Main Action Area -->
+        <section class="action-section">
+            <button class="scan-button botanical-shadow" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-camera-icon lucide-camera">
+                    <path
+                        d="M13.997 4a2 2 0 0 1 1.76 1.05l.486.9A2 2 0 0 0 18.003 7H20a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1.997a2 2 0 0 0 1.759-1.048l.489-.904A2 2 0 0 1 10.004 4z" />
+                    <circle cx="12" cy="13" r="3" />
+                </svg>
+                <span class="scan-text">Scan Plant</span>
+            </button>
+            <button class="upload-button" type="button">
+                <span class="material-symbols-outlined" data-icon="gallery_thumbnail">gallery_thumbnail</span>
+                <span>Upload from Gallery</span>
+            </button>
+        </section>
+        <!-- How to Use PlantCam Section -->
+        <section class="how-section">
+            <h3 class="section-title">How to Use PlantCam</h3>
+            <div class="steps-list">
+                <div class="step-item">
+                    <div class="step-icon">
+                        <span class="material-symbols-outlined" data-icon="center_focus_weak">center_focus_weak</span>
+                    </div>
+                    <div class="step-copy">
+                        <p class="step-heading">1. Point &amp; Scan</p>
+                        <p class="step-note">Position your plant in the frame.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-icon">
+                        <span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+                    </div>
+                    <div class="step-copy">
+                        <p class="step-heading">2. AI Analysis</p>
+                        <p class="step-note">Our AI identifies the plant and detects any issues.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-icon">
+                        <span class="material-symbols-outlined"
+                            data-icon="assignment_turned_in">assignment_turned_in</span>
+                    </div>
+                    <div class="step-copy">
+                        <p class="step-heading">3. Get Results</p>
+                        <p class="step-note">Receive a detailed diagnosis and treatment plan.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Stats Bento Grid -->
+        <section class="stats-grid">
+            <div class="activity-card botanical-shadow">
+                <div>
+                    <p class="activity-meta">Activity</p>
+                    <p class="activity-title">15 plants scanned this week</p>
+                </div>
+                <div class="activity-icon-wrap">
+                    <span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+                </div>
+            </div>
+            <!-- Asymmetric Secondary Cards -->
+            <div class="secondary-card secondary-card-low">
+                <div class="secondary-icon-wrap secondary-icon-primary">
+                    <span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+                </div>
+                <div>
+                    <h3>Care Guides</h3>
+                    <p>48 new species</p>
+                </div>
+            </div>
+            <div class="secondary-card secondary-card-high">
+                <div class="secondary-icon-wrap secondary-icon-tertiary">
+                    <span class="material-symbols-outlined" data-icon="health_and_safety">health_and_safety</span>
+                </div>
+                <div>
+                    <h3>Diagnosis</h3>
+                    <p>Check symptoms</p>
+                </div>
+            </div>
+        </section>
+        <!-- Quick Tips (Editorial Section) -->
+        <section class="daily-section">
+            <h3 class="section-title" style="margin-bottom: 16px;">Daily Botanical</h3>
+            <div class="daily-card botanical-shadow">
+                <img alt="Succulent detail" class="daily-image"
+                    data-alt="Macro photography of a lush green succulent with intricate patterns and soft natural morning light illuminating the textures"
+                    src="daily-botanical.jpg" />
+                <div class="daily-overlay">
+                    <p class="daily-kicker">Expert Advice</p>
+                    <h4 class="daily-heading">Mastering Sunlight for Urban Jungles</h4>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- BottomNavBar -->
+    <nav class="bottom-nav">
+        <!-- Home Tab (Active) -->
+        <a class="nav-item nav-item-active" href="#">
+            <span class="material-symbols-outlined icon-filled" data-icon="home">home</span>
+            <span class="nav-label">Home</span>
+        </a>
+        <!-- History Tab -->
+        <a class="nav-item" href="#">
+            <span class="material-symbols-outlined" data-icon="history">history</span>
+            <span class="nav-label">History</span>
+        </a>
+        <!-- Library Tab -->
+        <a class="nav-item" href="#">
+            <span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+            <span class="nav-label">Library</span>
+        </a>
+    </nav>
 </body>
 
 </html>

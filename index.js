@@ -1,9 +1,4 @@
-const person = {
-    name:"Lance",
-    age:22,
-    hobbies: function(hobbies){
-        return `${this.name} likes to ${hobbies}`;
-    }
-}
+const jsonObject =
+ {"name":"Alice","age":25};
 
-console.log(person.hobbies());
+console.log(jsonObject.age)

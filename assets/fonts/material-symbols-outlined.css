@@ -1,0 +1,114 @@
+﻿@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url(material-symbols-outlined-01.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url(material-symbols-outlined-02.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url(material-symbols-outlined-03.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url(material-symbols-outlined-04.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(material-symbols-outlined-05.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(material-symbols-outlined-06.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(material-symbols-outlined-07.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(material-symbols-outlined-08.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(material-symbols-outlined-09.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(material-symbols-outlined-10.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(material-symbols-outlined-11.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(material-symbols-outlined-12.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(material-symbols-outlined-13.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(material-symbols-outlined-14.woff2) format('woff2');
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+}
+
+
