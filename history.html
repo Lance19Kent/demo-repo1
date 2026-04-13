@@ -413,9 +413,9 @@
             display: block;
         }
 
-        .settings-menu button {
+        .settings-menu a {
+            display: block;
             width: 100%;
-            border: 0;
             border-radius: 10px;
             padding: 10px 12px;
             text-align: left;
@@ -427,9 +427,10 @@
             background: transparent;
             cursor: pointer;
             transition: background 0.2s ease;
+            text-decoration: none;
         }
 
-        .settings-menu button:hover {
+        .settings-menu a:hover {
             background: var(--color-surface-high);
         }
 
@@ -548,8 +549,8 @@
                 </svg>
             </button>
             <div id="settingsMenu" class="settings-menu" role="menu" aria-label="Settings menu">
-                <button id="aboutAppBtn" type="button" role="menuitem">About App</button>
-                <button id="helpBtn" type="button" role="menuitem">Help/Guide</button>
+                <a id="aboutAppLink" href="about.html" role="menuitem">About App</a>
+                <a id="helpLink" href="about.html#help-guide" role="menuitem">Help/Guide</a>
             </div>
         </div>
     </header>
@@ -817,10 +818,8 @@
         (function () {
             var settingsToggle = document.getElementById('settingsToggle');
             var settingsMenu = document.getElementById('settingsMenu');
-            var aboutAppBtn = document.getElementById('aboutAppBtn');
-            var helpBtn = document.getElementById('helpBtn');
 
-            if (!settingsToggle || !settingsMenu || !aboutAppBtn || !helpBtn) {
+            if (!settingsToggle || !settingsMenu) {
                 return;
             }
 
@@ -855,15 +854,10 @@
                 }
             });
 
-            aboutAppBtn.addEventListener('click', function () {
-                alert('PlantCam helps identify plant diseases and provides care guidance quickly.');
-                closeMenu();
-            });
-
-            helpBtn.addEventListener('click', function () {
-                alert('Help: Tap Scan Plant to analyze using camera, or Upload from Gallery to use a saved photo.');
-                closeMenu();
-            });
+            var menuLinks = settingsMenu.querySelectorAll('a');
+            for (var i = 0; i < menuLinks.length; i++) {
+                menuLinks[i].addEventListener('click', closeMenu);
+            }
         })();
     </script>
 </body>

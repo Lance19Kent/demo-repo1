@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>About PlantCam</title>
+    <link href="assets/fonts/inter.css" rel="stylesheet" />
+    <style>
+        :root {
+            --color-primary: #006e28;
+            --color-primary-container: #34c759;
+            --color-on-background: #131e14;
+            --color-on-surface-variant: #3d4a3c;
+            --color-outline-variant: #bccbb8;
+            --color-surface-container: #e4f2e2;
+            --color-surface-variant: #d8e6d6;
+            --color-surface-low: #eaf7e7;
+            --color-surface-high: #deecdc;
+            --color-surface-highest: #d8e6d6;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            color: var(--color-on-background);
+            min-height: max(884px, 100dvh);
+        }
+
+        .top-app-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            height: 64px;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+        }
+
+        .brand-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .brand-title {
+            margin: 0;
+            font-size: 1.125rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--color-primary);
+        }
+
+        .top-menu-btn {
+            border: 0;
+            background: transparent;
+            color: rgba(19, 30, 20, 0.6);
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .top-menu-btn:active {
+            transform: scale(0.95);
+        }
+
+        .top-menu-wrap {
+            position: relative;
+        }
+
+        .settings-menu {
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 0;
+            width: 172px;
+            padding: 6px;
+            border-radius: 14px;
+            border: 1px solid rgba(188, 203, 184, 0.5);
+            background: #ffffff;
+            box-shadow: 0 12px 28px rgba(19, 30, 20, 0.14);
+            display: none;
+            z-index: 70;
+            font-family: inherit;
+        }
+
+        .settings-menu.is-open {
+            display: block;
+        }
+
+        .settings-menu a {
+            display: block;
+            width: 100%;
+            border-radius: 10px;
+            padding: 10px 12px;
+            text-align: left;
+            font-size: 0.875rem;
+            font-family: inherit;
+            font-weight: 500;
+            line-height: 1.35;
+            color: var(--color-on-background);
+            background: transparent;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            text-decoration: none;
+        }
+
+        .settings-menu a:hover {
+            background: var(--color-surface-low);
+        }
+
+        .main-content {
+            width: 100%;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 84px 24px 36px;
+        }
+
+        .intro {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .intro-media {
+            display: inline-block;
+            padding: 16px;
+            margin-bottom: 24px;
+            border-radius: 24px;
+            background: var(--color-surface-container);
+            box-shadow: 0 4px 16px rgba(19, 30, 20, 0.08);
+        }
+
+        .intro-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .page-title {
+            margin: 0 0 8px;
+            font-size: 1.875rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .page-subtitle {
+            margin: 0;
+            color: var(--color-on-surface-variant);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(216, 230, 214, 0.3);
+        }
+
+        .info-row:last-child {
+            border-bottom: 0;
+        }
+
+        .info-copy {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-label {
+            margin: 0 0 4px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--color-on-surface-variant);
+            font-weight: 700;
+        }
+
+        .info-value {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-on-background);
+        }
+
+        .info-icon {
+            color: var(--color-outline-variant);
+            flex-shrink: 0;
+        }
+
+        .mission-card {
+            margin-top: 48px;
+            padding: 32px;
+            border-radius: 32px;
+            background: var(--color-surface-low);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .mission-title {
+            margin: 0 0 8px;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .mission-text {
+            margin: 0;
+            color: var(--color-on-surface-variant);
+            font-size: 0.875rem;
+            line-height: 1.65;
+        }
+
+        .mission-art {
+            position: absolute;
+            right: -24px;
+            bottom: -24px;
+            opacity: 0.1;
+        }
+
+        .page-footer {
+            width: 100%;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px 28px;
+        }
+
+        .close-btn {
+            width: 100%;
+            border: 0;
+            border-radius: 999px;
+            padding: 16px 24px;
+            background: var(--color-surface-highest);
+            color: var(--color-primary);
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .close-btn:hover {
+            opacity: 0.9;
+        }
+
+        .close-btn:active {
+            transform: scale(0.98);
+        }
+
+        @media (max-width: 420px) {
+            .main-content {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+
+            .page-footer {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .mission-card {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- TopAppBar -->
+    <header class="top-app-bar">
+        <div class="brand-wrap">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                fill="var(--color-primary)">
+                <path
+                    d="M216-176q-45-45-70.5-104T120-402q0-63 24-124.5T222-642q35-35 86.5-60t122-39.5Q501-756 591.5-759t202.5 7q8 106 5 195t-16.5 160.5q-13.5 71.5-38 125T684-182q-53 53-112.5 77.5T450-80q-65 0-127-25.5T216-176Zm112-16q29 17 59.5 24.5T450-160q46 0 91-18.5t86-59.5q18-18 36.5-50.5t32-85Q709-426 716-500.5t2-177.5q-49-2-110.5-1.5T485-670q-61 9-116 29t-90 55q-45 45-62 89t-17 85q0 59 22.5 103.5T262-246q42-80 111-153.5T534-520q-72 63-125.5 142.5T328-192Zm0 0Zm0 0Z" />
+            </svg>
+            <h1 class="brand-title">PlantCam</h1>
+        </div>
+        <div class="top-menu-wrap">
+            <button id="settingsToggle" class="top-menu-btn" type="button" aria-label="Open menu" aria-expanded="false"
+                aria-controls="settingsMenu">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                    fill="var(--color-primary)">
+                    <path
+                        d="m370-80-16-128q-13-5-24.5-12T307-235l-119 50L78-375l103-78q-1-7-1-13.5v-27q0-6.5 1-13.5L78-585l110-190 119 50q11-8 23-15t24-12l16-128h220l16 128q13 5 24.5 12t22.5 15l119-50 110 190-103 78q1 7 1 13.5v27q0 6.5-2 13.5l103 78-110 190-118-50q-11 8-23 15t-24 12L590-80H370Zm70-80h79l14-106q31-8 57.5-23.5T639-327l99 41 39-68-86-65q5-14 7-29.5t2-31.5q0-16-2-31.5t-7-29.5l86-65-39-68-99 42q-22-23-48.5-38.5T533-694l-13-106h-79l-14 106q-31 8-57.5 23.5T321-633l-99-41-39 68 86 64q-5 15-7 30t-2 32q0 16 2 31t7 30l-86 65 39 68 99-42q22 23 48.5 38.5T427-266l13 106Zm42-180q58 0 99-41t41-99q0-58-41-99t-99-41q-59 0-99.5 41T342-480q0 58 40.5 99t99.5 41Zm-2-140Z" />
+                </svg>
+            </button>
+            <div id="settingsMenu" class="settings-menu" role="menu" aria-label="Settings menu">
+                <a id="aboutAppLink" href="about.html" role="menuitem">About App</a>
+                <a id="helpLink" href="#help-guide" role="menuitem">Help/Guide</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="intro">
+            <div class="intro-media">
+                <img alt="Botanical icon" class="intro-image"
+                    data-alt="Macro photography of a vibrant green monstera leaf with soft natural lighting and morning dew drops on a white background"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBiyTkd1RbsKSLKNc0ypep53J9OhiMrySMRXZOC_FctR6YCEWo8YCMcd_dL-PuYJtObPPir58ZXPyNWS5ocp8qXvuUN5I78G6O3xtFASVrWiD5NamYGgwQ8we9S-nzyD0V4dGxTmiPpfIciJXXodGuN1x3cyxbnnqj_8uxpoQBmw5LGqB0-SOX9N_0Ml8UzhCJmm4svXxsFhZ4OYGXmZ3R2lIMnXr4itQwlZsyIt4CCRBoFqHwsFL5KkOxudjnpqNwIZtwFLwcXjhh" />
+            </div>
+            <h2 class="page-title">About PlantCam</h2>
+            <p class="page-subtitle">Your botanical companion in the digital age.</p>
+        </section>
+
+        <section class="info-list">
+            <div class="info-row">
+                <div class="info-copy">
+                    <p class="info-label">Version</p>
+                    <p class="info-value">Edge AI v1.0</p>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                    fill=currentColor class="info-icon">
+                    <path
+                        d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm0-80h640v-400H160v400Zm140-40-56-56 103-104-104-104 57-56 160 160-160 160Zm180 0v-80h240v80H480Z" />
+                </svg>
+            </div>
+
+            <div class="info-row">
+                <div class="info-copy">
+                    <p class="info-label">Developer</p>
+                    <p class="info-value">Lance Kent Geoffrey B. Magollado</p>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                    fill=currentColor class="info-icon">
+                    <path
+                        d="M367-527q-47-47-47-113t47-113q47-47 113-47t113 47q47 47 47 113t-47 113q-47 47-113 47t-113-47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm296.5-343.5Q560-607 560-640t-23.5-56.5Q513-720 480-720t-56.5 23.5Q400-673 400-640t23.5 56.5Q447-560 480-560t56.5-23.5ZM480-640Zm0 400Z" />
+                </svg>
+            </div>
+
+            <div class="info-row">
+                <div class="info-copy">
+                    <p class="info-label">Institution</p>
+                    <p class="info-value">Quezon City University</p>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                    fill=currentColor class="info-icon">
+                    <path
+                        d="M200-280v-280h80v280h-80Zm240 0v-280h80v280h-80ZM80-120v-80h800v80H80Zm600-160v-280h80v280h-80ZM80-640v-80l400-200 400 200v80H80Zm178-80h444-444Zm0 0h444L480-830 258-720Z" />
+                </svg>
+            </div>
+
+            <div class="info-row">
+                <div class="info-copy">
+                    <p class="info-label">Project</p>
+                    <p class="info-value">CC106</p>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                    fill=currentColor class="info-icon">
+                    <path
+                        d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h240l80 80h320q33 0 56.5 23.5T880-640H447l-80-80H160v480l96-320h684L837-217q-8 26-29.5 41.5T760-160H160Zm84-80h516l72-240H316l-72 240Zm0 0 72-240-72 240Zm-84-400v-80 80Z" />
+                </svg>
+            </div>
+        </section>
+
+        <section class="mission-card" id="help-guide">
+            <div class="mission-content">
+                <h3 class="mission-title">Our Mission</h3>
+                <p class="mission-text">
+                    Bridging the gap between human intuition and artificial intelligence to foster a deeper connection
+                    with the natural world.
+                </p>
+            </div>
+            <div class="mission-art">
+                <svg xmlns="http://www.w3.org/2000/svg" height="120px" viewBox="0 -960 960 960" width="120px"
+                    fill="var(--color-primary)">
+                    <path
+                        d="M420-320h120v-80h80v-120h-80v-80H420v80h-80v120h80v80Zm60 260q-139-35-229.5-159.5T160-496v-264l320-120 320 120v264q0 152-90.5 276.5T480-60Zm0-84q104-33 172-132t68-220v-209l-240-90-240 90v209q0 121 68 220t172 132Zm0-316Z" />
+                </svg>
+            </div>
+        </section>
+    </main>
+
+    <footer class="page-footer">
+        <button class="close-btn" type="button" onclick="history.back()">
+            Close
+        </button>
+    </footer>
+
+    <script>
+        (function () {
+            var settingsToggle = document.getElementById('settingsToggle');
+            var settingsMenu = document.getElementById('settingsMenu');
+
+            if (!settingsToggle || !settingsMenu) {
+                return;
+            }
+
+            function closeMenu() {
+                settingsMenu.classList.remove('is-open');
+                settingsToggle.setAttribute('aria-expanded', 'false');
+            }
+
+            function openMenu() {
+                settingsMenu.classList.add('is-open');
+                settingsToggle.setAttribute('aria-expanded', 'true');
+            }
+
+            settingsToggle.addEventListener('click', function (event) {
+                event.stopPropagation();
+                if (settingsMenu.classList.contains('is-open')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+
+            settingsMenu.addEventListener('click', function (event) {
+                event.stopPropagation();
+            });
+
+            document.addEventListener('click', closeMenu);
+
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape') {
+                    closeMenu();
+                }
+            });
+
+            var menuLinks = settingsMenu.querySelectorAll('a');
+            for (var i = 0; i < menuLinks.length; i++) {
+                menuLinks[i].addEventListener('click', closeMenu);
+            }
+        })();
+    </script>
+</body>
+
+</html>
