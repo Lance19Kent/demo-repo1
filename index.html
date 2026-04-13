@@ -4,10 +4,15 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>PlantCam - Home</title>
-    <link href="assets/fonts/inter.css" rel="stylesheet" />
-    <link href="assets/fonts/material-symbols-outlined.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet" />
     <style>
         :root {
             --color-primary: #006e28;
@@ -66,6 +71,7 @@
             justify-content: space-between;
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(12px);
+            /* box-shadow: 0 -8px 32px rgba(19, 30, 20, 0.08); */
         }
 
         .brand-wrap {
@@ -103,8 +109,8 @@
         .main-content {
             width: 100%;
             margin: 0 auto;
-            padding-left: 12px;
-            padding-right: 12px;
+            padding-left: 6px;
+            padding-right: 6px;
             padding-top: 80px;
             display: flex;
             flex-direction: column;
@@ -466,12 +472,16 @@
     <!-- TopAppBar -->
     <header class="top-app-bar">
         <div class="brand-wrap">
-            <span class="material-symbols-outlined brand-icon" data-icon="eco">eco</span>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                fill=var(--color-primary)>
+                <path
+                    d="M216-176q-45-45-70.5-104T120-402q0-63 24-124.5T222-642q35-35 86.5-60t122-39.5Q501-756 591.5-759t202.5 7q8 106 5 195t-16.5 160.5q-13.5 71.5-38 125T684-182q-53 53-112.5 77.5T450-80q-65 0-127-25.5T216-176Zm112-16q29 17 59.5 24.5T450-160q46 0 91-18.5t86-59.5q18-18 36.5-50.5t32-85Q709-426 716-500.5t2-177.5q-49-2-110.5-1.5T485-670q-61 9-116 29t-90 55q-45 45-62 89t-17 85q0 59 22.5 103.5T262-246q42-80 111-153.5T534-520q-72 63-125.5 142.5T328-192Zm0 0Zm0 0Z" />
+            </svg>
             <h1 class="brand-title">PlantCam</h1>
         </div>
-        <button class="top-menu-btn" type="button" aria-label="Open menu">
+        <!-- <button class="top-menu-btn" type="button" aria-label="Open menu">
             <span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
-        </button>
+        </button> -->
     </header>
     <main class="main-content">
         <!-- Hero Section -->
@@ -499,7 +509,11 @@
                 <span class="scan-text">Scan Plant</span>
             </button>
             <button class="upload-button" type="button">
-                <span class="material-symbols-outlined" data-icon="gallery_thumbnail">gallery_thumbnail</span>
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                    fill=currentColor>
+                    <path
+                        d="M120-200q-33 0-56.5-23.5T40-280v-400q0-33 23.5-56.5T120-760h400q33 0 56.5 23.5T600-680v400q0 33-23.5 56.5T520-200H120Zm600-320q-17 0-28.5-11.5T680-560v-160q0-17 11.5-28.5T720-760h160q17 0 28.5 11.5T920-720v160q0 17-11.5 28.5T880-520H720Zm40-80h80v-80h-80v80ZM120-280h400v-400H120v400Zm40-80h320L375-500l-75 100-55-73-85 113Zm560 160q-17 0-28.5-11.5T680-240v-160q0-17 11.5-28.5T720-440h160q17 0 28.5 11.5T920-400v160q0 17-11.5 28.5T880-200H720Zm40-80h80v-80h-80v80Zm-640 0v-400 400Zm640-320v-80 80Zm0 320v-80 80Z" />
+                </svg>
                 <span>Upload from Gallery</span>
             </button>
         </section>
@@ -509,7 +523,11 @@
             <div class="steps-list">
                 <div class="step-item">
                     <div class="step-icon">
-                        <span class="material-symbols-outlined" data-icon="center_focus_weak">center_focus_weak</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                            fill=currentColor>
+                            <path
+                                d="M367-367q-47-47-47-113t47-113q47-47 113-47t113 47q47 47 47 113t-47 113q-47 47-113 47t-113-47Zm169.5-56.5Q560-447 560-480t-23.5-56.5Q513-560 480-560t-56.5 23.5Q400-513 400-480t23.5 56.5Q447-400 480-400t56.5-23.5ZM480-480ZM200-120q-33 0-56.5-23.5T120-200v-160h80v160h160v80H200Zm400 0v-80h160v-160h80v160q0 33-23.5 56.5T760-120H600ZM120-600v-160q0-33 23.5-56.5T200-840h160v80H200v160h-80Zm640 0v-160H600v-80h160q33 0 56.5 23.5T840-760v160h-80Z" />
+                        </svg>
                     </div>
                     <div class="step-copy">
                         <p class="step-heading">1. Point &amp; Scan</p>
@@ -518,7 +536,11 @@
                 </div>
                 <div class="step-item">
                     <div class="step-icon">
-                        <span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                            fill=currentColor>
+                            <path
+                                d="M240-80v-172q-57-52-88.5-121.5T120-520q0-150 105-255t255-105q125 0 221.5 73.5T827-615l52 205q5 19-7 34.5T840-360h-80v120q0 33-23.5 56.5T680-160h-80v80h-80v-160h160v-200h108l-38-155q-23-91-98-148t-172-57q-116 0-198 81t-82 197q0 60 24.5 114t69.5 96l26 24v208h-80Zm254-360Zm-54 80h80l6-50q8-3 14.5-7t11.5-9l46 20 40-68-40-30q2-8 2-16t-2-16l40-30-40-68-46 20q-5-5-11.5-9t-14.5-7l-6-50h-80l-6 50q-8 3-14.5 7t-11.5 9l-46-20-40 68 40 30q-2 8-2 16t2 16l-40 30 40 68 46-20q5 5 11.5 9t14.5 7l6 50Zm-2.5-117.5Q420-495 420-520t17.5-42.5Q455-580 480-580t42.5 17.5Q540-545 540-520t-17.5 42.5Q505-460 480-460t-42.5-17.5Z" />
+                        </svg>
                     </div>
                     <div class="step-copy">
                         <p class="step-heading">2. AI Analysis</p>
@@ -527,8 +549,11 @@
                 </div>
                 <div class="step-item">
                     <div class="step-icon">
-                        <span class="material-symbols-outlined"
-                            data-icon="assignment_turned_in">assignment_turned_in</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                            fill=currentColor>
+                            <path
+                                d="m424-318 282-282-56-56-226 226-114-114-56 56 170 170ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h168q13-36 43.5-58t68.5-22q38 0 68.5 22t43.5 58h168q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm301.5-598.5Q510-807 510-820t-8.5-21.5Q493-850 480-850t-21.5 8.5Q450-833 450-820t8.5 21.5Q467-790 480-790t21.5-8.5ZM200-200v-560 560Z" />
+                        </svg>
                     </div>
                     <div class="step-copy">
                         <p class="step-heading">3. Get Results</p>
@@ -545,13 +570,21 @@
                     <p class="activity-title">15 plants scanned this week</p>
                 </div>
                 <div class="activity-icon-wrap">
-                    <span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                        fill=currentColor>
+                        <path
+                            d="M120-120v-80l80-80v160h-80Zm160 0v-240l80-80v320h-80Zm160 0v-320l80 81v239h-80Zm160 0v-239l80-80v319h-80Zm160 0v-400l80-80v480h-80ZM120-327v-113l280-280 160 160 280-280v113L560-447 400-607 120-327Z" />
+                    </svg>
                 </div>
             </div>
             <!-- Asymmetric Secondary Cards -->
             <div class="secondary-card secondary-card-low">
                 <div class="secondary-icon-wrap secondary-icon-primary">
-                    <span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                        fill=currentColor>
+                        <path
+                            d="M560-564v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-600q-38 0-73 9.5T560-564Zm0 220v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-380q-38 0-73 9t-67 27Zm0-110v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-490q-38 0-73 9.5T560-454ZM260-320q47 0 91.5 10.5T440-278v-394q-41-24-87-36t-93-12q-36 0-71.5 7T120-692v396q35-12 69.5-18t70.5-6Zm260 42q44-21 88.5-31.5T700-320q36 0 70.5 6t69.5 18v-396q-33-14-68.5-21t-71.5-7q-47 0-93 12t-87 36v394Zm-40 118q-48-38-104-59t-116-21q-42 0-82.5 11T100-198q-21 11-40.5-1T40-234v-482q0-11 5.5-21T62-752q46-24 96-36t102-12q58 0 113.5 15T480-740q51-30 106.5-45T700-800q52 0 102 12t96 36q11 5 16.5 15t5.5 21v482q0 23-19.5 35t-40.5 1q-37-20-77.5-31T700-240q-60 0-116 21t-104 59ZM280-494Z" />
+                    </svg>
                 </div>
                 <div>
                     <h3>Care Guides</h3>
@@ -560,7 +593,11 @@
             </div>
             <div class="secondary-card secondary-card-high">
                 <div class="secondary-icon-wrap secondary-icon-tertiary">
-                    <span class="material-symbols-outlined" data-icon="health_and_safety">health_and_safety</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                        fill=currentColor>
+                        <path
+                            d="M420-340h120v-100h100v-120H540v-100H420v100H320v120h100v100Zm60 260q-139-35-229.5-159.5T160-516v-244l320-120 320 120v244q0 152-90.5 276.5T480-80Zm0-84q104-33 172-132t68-220v-189l-240-90-240 90v189q0 121 68 220t172 132Zm0-316Z" />
+                    </svg>
                 </div>
                 <div>
                     <h3>Diagnosis</h3>
@@ -586,17 +623,29 @@
     <nav class="bottom-nav">
         <!-- Home Tab (Active) -->
         <a class="nav-item nav-item-active" href="#">
-            <span class="material-symbols-outlined icon-filled" data-icon="home">home</span>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                fill=currentColor>
+                <path
+                    d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z" />
+            </svg>
             <span class="nav-label">Home</span>
         </a>
         <!-- History Tab -->
-        <a class="nav-item" href="#">
-            <span class="material-symbols-outlined" data-icon="history">history</span>
+        <a class="nav-item" href="history.html">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                fill=currentColor>
+                <path
+                    d="M480-120q-138 0-240.5-91.5T122-440h82q14 104 92.5 172T480-200q117 0 198.5-81.5T760-480q0-117-81.5-198.5T480-760q-69 0-129 32t-101 88h110v80H120v-240h80v94q51-64 124.5-99T480-840q75 0 140.5 28.5t114 77q48.5 48.5 77 114T840-480q0 75-28.5 140.5t-77 114q-48.5 48.5-114 77T480-120Zm112-192L440-464v-216h80v184l128 128-56 56Z" />
+            </svg>
             <span class="nav-label">History</span>
         </a>
         <!-- Library Tab -->
-        <a class="nav-item" href="#">
-            <span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+        <a class="nav-item" href="library.html">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                fill=currentColor>
+                <path
+                    d="M120-520v-320h320v320H120Zm0 400v-320h320v320H120Zm400-400v-320h320v320H520Zm0 400v-320h320v320H520ZM200-600h160v-160H200v160Zm400 0h160v-160H600v160Zm0 400h160v-160H600v160Zm-400 0h160v-160H200v160Zm400-400Zm0 240Zm-240 0Zm0-240Z" />
+            </svg>
             <span class="nav-label">Library</span>
         </a>
     </nav>

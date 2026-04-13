@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Solanaceous Plants Library - PlantCam</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --color-primary: #006e28;
+            --color-primary-container: #34c759;
+            --color-secondary-container: #b9f474;
+            --color-secondary-text: #437000;
+            --color-tertiary: #9c413d;
+            --color-on-surface: #131e14;
+            --color-on-surface-variant: #3d4a3c;
+            --color-outline: #6d7b6b;
+            --color-outline-variant: #bccbb8;
+            --color-surface-highest: #f1f5f1;
+            --color-surface-high: #f0f6f0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            line-height: 1;
+        }
+
+        .icon-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .botanical-shadow {
+            box-shadow: 0 8px 32px rgba(19, 30, 20, 0.06);
+        }
+
+        body {
+            min-height: max(884px, 100dvh);
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            color: var(--color-on-surface);
+            padding-bottom: 96px;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .top-app-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            height: 64px;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+        }
+
+        .brand-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .brand-icon,
+        .brand-title {
+            color: var(--color-primary);
+        }
+
+        .brand-title {
+            margin: 0;
+            font-size: 1.125rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .top-menu-btn {
+            border: 0;
+            background: transparent;
+            color: rgba(19, 30, 20, 0.6);
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .top-menu-btn:active {
+            transform: scale(0.95);
+        }
+
+        .main-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 72px 24px 40px;
+        }
+
+        .page-header {
+            padding: 0 0 10px;
+            margin-bottom: 8px;
+        }
+
+        .page-header h2 {
+            margin: 0;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: rgba(19, 30, 20, 0.8);
+        }
+
+        .hero-section {
+            position: relative;
+            width: 100%;
+            height: 224px;
+            border-radius: 24px;
+            overflow: hidden;
+            margin: 8px 0 32px;
+        }
+
+        .hero-bg,
+        .hero-bg img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-bg img {
+            object-fit: cover;
+            filter: brightness(0.75) blur(1px);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2), transparent);
+        }
+
+        .hero-copy {
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .hero-copy h3 {
+            margin: 0 0 4px;
+            color: #ffffff;
+            font-size: clamp(1.75rem, 2.3vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-copy p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: clamp(0.875rem, 1.2vw, 1.125rem);
+            font-weight: 500;
+        }
+
+        .controls-section {
+            margin-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .search-wrap {
+            position: relative;
+            max-width: 640px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--color-outline);
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 16px 16px 16px 48px;
+            border: 0;
+            border-radius: 12px;
+            background: var(--color-surface-highest);
+            color: var(--color-on-surface);
+            font-size: 1rem;
+            outline: none;
+            transition: box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .search-input::placeholder {
+            color: var(--color-outline);
+        }
+
+        .search-input:focus {
+            background: #ffffff;
+            box-shadow: 0 0 0 1px rgba(0, 110, 40, 0.35);
+        }
+
+        .chip-row {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+        }
+
+        .chip {
+            border: 0;
+            border-radius: 999px;
+            padding: 8px 24px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .chip:hover {
+            opacity: 0.82;
+        }
+
+        .chip-active {
+            background: var(--color-primary);
+            color: #ffffff;
+        }
+
+        .chip-secondary {
+            background: var(--color-secondary-container);
+            color: var(--color-secondary-text);
+        }
+
+        .chip-muted {
+            background: var(--color-surface-highest);
+            color: var(--color-on-surface-variant);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .plant-card {
+            background: #ffffff;
+            border: 1px solid rgba(188, 203, 184, 0.3);
+            border-radius: 24px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+
+        .plant-card:hover {
+            transform: scale(1.02);
+        }
+
+        .plant-image-wrap {
+            position: relative;
+            height: 256px;
+            overflow: hidden;
+        }
+
+        .plant-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .plant-card:hover .plant-image {
+            transform: scale(1.1);
+        }
+
+        .difficulty-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            padding: 4px 12px;
+            border-radius: 999px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .difficulty-easy {
+            background: var(--color-primary-container);
+            color: #004d1a;
+        }
+
+        .difficulty-moderate {
+            background: var(--color-secondary-container);
+            color: var(--color-secondary-text);
+        }
+
+        .plant-content {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .plant-content h4 {
+            margin: 0 0 4px;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--color-on-surface);
+        }
+
+        .plant-latin {
+            margin: 0 0 16px;
+            color: #3e6a00;
+            font-style: italic;
+            font-size: 0.75rem;
+        }
+
+        .plant-footer {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .plant-tag {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--color-outline);
+            font-weight: 700;
+        }
+
+        .plant-arrow {
+            border: 0;
+            background: transparent;
+            color: var(--color-primary);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .plant-card:hover .plant-arrow {
+            transform: translateX(4px);
+        }
+
+        .fab-button {
+            position: fixed;
+            right: 24px;
+            bottom: 112px;
+            z-index: 40;
+            width: 56px;
+            height: 56px;
+            border: 0;
+            border-radius: 999px;
+            display: grid;
+            place-items: center;
+            color: #ffffff;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-container));
+            transition: transform 0.2s ease;
+        }
+
+        .fab-button:active {
+            transform: scale(0.9);
+        }
+
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 50;
+            padding: 12px 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            background: rgba(255, 255, 255, 0.95);
+            border-top: 1px solid rgba(188, 203, 184, 0.2);
+            border-radius: 24px 24px 0 0;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.04);
+        }
+
+        .nav-item {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 16px;
+            border-radius: 16px;
+            color: rgba(19, 30, 20, 0.4);
+            transition: color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+        }
+
+        .nav-item:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-item:active {
+            transform: scale(0.9);
+        }
+
+        .nav-item-active {
+            background: rgba(52, 199, 89, 0.1);
+            color: var(--color-primary);
+        }
+
+        .nav-label {
+            margin-top: 4px;
+            font-size: 10px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        @media (max-width: 1199px) {
+            .card-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 900px) {
+            .card-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            .main-content {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+
+            .hero-copy {
+                padding: 24px;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chip {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- TopAppBar -->
+    <header class="top-app-bar">
+        <div class="brand-wrap">
+            <span class="material-symbols-outlined brand-icon" data-icon="eco">eco</span>
+            <h1 class="brand-title">PlantCam</h1>
+        </div>
+        <!-- <div>
+            <button class="top-menu-btn" type="button" aria-label="Open menu">
+                <span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+            </button>
+        </div> -->
+    </header>
+    <main class="main-content">
+        <!-- Sub-header -->
+        <!-- <div class="page-header">
+            <h2>Plant Library</h2>
+        </div> -->
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-bg">
+                <img data-alt="Dreamy sunlit kitchen garden with blurred tomato vines and lush green vegetable leaves in soft morning light"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFjCNV25kDJgXZg-e0jB3mDfNjreQwD9oLbWK8MJvI5yjQDEvGNlZIiiaA2giSCSWgVL02lBOS6PQNZxbPLXedTPooefZSMLDB5fTJ8_LIQJ-TVNTRz-DQrM33irUElJ1tL2ZH4GmI8W0CGpQ0Fw2Zoe73CVmVfhAW32QkYiRdH4yEDfCmDbTl8ZVIdukM1czsQS1vphyxfYtrCwH605fwxeD0QBGrK2pzDAFT2SbGX6LC17BsnmDaM7igFazt2Pq0Z2nYRTK3irWJ" />
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-copy">
+                <h3>Solanaceous Family</h3>
+                <p>98 Genera • 2,700+ Species</p>
+            </div>
+        </section>
+        <!-- Search & Filter -->
+        <section class="controls-section">
+            <div class="search-wrap">
+                <span class="material-symbols-outlined search-icon" data-icon="search">search</span>
+                <input class="search-input" placeholder="Search plant species..." type="text" />
+            </div>
+            <div class="chip-row hide-scrollbar">
+                <button class="chip chip-active" type="button">All
+                    Plants</button>
+                <button class="chip chip-secondary" type="button">Vegetables</button>
+                <button class="chip chip-muted" type="button">Fruits</button>
+                <button class="chip chip-muted" type="button">Ornamental</button>
+            </div>
+        </section>
+        <!-- Content Grid -->
+        <section class="card-grid">
+            <!-- Plant Card 1 -->
+            <div class="plant-card botanical-shadow">
+                <div class="plant-image-wrap">
+                    <img class="plant-image"
+                        data-alt="Vibrant cluster of red cherry tomatoes on a vine with water droplets, natural daylight macro shot"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxoqWOcNRL1Hh-RAwjk36ak1M6bDbA4Sj6BCsPiQjdbM2LeH7RV0xykSaV_TneEMwRstWai6Mu42196MfmxFJc4ZYRK7J3rlV4cLnuLfUeEjpPC9ehwAIL5QFHlI4scBztf4ROegQGk8cL2LuGB7XfF8zyZKE_NcRS_1iuVXk4f1v75rknNOJLGV4TGx62VXpDr8fDZbYN6YWBDsvwGyzsLQjJ5reWTMU-G9ubwndMC-vLrn_ioBaooUp_msO-Y9hYTzJz7LlUJKfp" />
+                    <span class="difficulty-badge difficulty-easy">Easy</span>
+                </div>
+                <div class="plant-content">
+                    <h4>Cherry Tomato</h4>
+                    <p class="plant-latin">Solanum lycopersicum var. cerasiforme</p>
+                    <div class="plant-footer">
+                        <span class="plant-tag">Fruit Bearing</span>
+                        <button class="material-symbols-outlined plant-arrow" type="button"
+                            aria-label="Open Cherry Tomato">
+                            arrow_forward
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Plant Card 2 -->
+            <div class="plant-card botanical-shadow">
+                <div class="plant-image-wrap">
+                    <img class="plant-image"
+                        data-alt="Shiny green bell pepper growing in a garden under soft diffused sunlight, detailed leaf texture"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4uyP0sSRgMfVzaW6m09oGEeIjgPDVLjZ6hBaF1CPmNV3382ZkxiBiDoHj7seDN1i3un4mWnjBGwytLoTWx_99b_kjgORcOrS7haG52ZGmy1o4BFTsbDavNo1Mgl6skz6HbC2czzfdWnLlbLemjdCMm5bmpJoIX6yY0kEh16WBy8GhMgaVMqCyjfFGmIBXfRQboVooNZzjpClb50Ieo5o3c8S-oTGS58Cx4XiBQZIozH7zphuNupm_uCvwAhWbIbCquyoDFzJyLL9p" />
+                    <span class="difficulty-badge difficulty-easy">Easy</span>
+                </div>
+                <div class="plant-content">
+                    <h4>Bell Pepper</h4>
+                    <p class="plant-latin">Capsicum annuum</p>
+                    <div class="plant-footer">
+                        <span class="plant-tag">Vegetable</span>
+                        <button class="material-symbols-outlined plant-arrow" type="button"
+                            aria-label="Open Bell Pepper">
+                            arrow_forward
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Plant Card 3 -->
+            <div class="plant-card botanical-shadow">
+                <div class="plant-image-wrap">
+                    <img class="plant-image"
+                        data-alt="Glossy dark purple eggplant hanging from a plant in a backyard garden, soft evening light"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA0fzm0-rOTG2g4E_pojAcRhlY2k2xXElNqZXxIXKxgrDESW77O3LHb2PfyMq72YuKwy4uQ9VWw2RhNw3ea7XNQaTwIx-0E7fEh1KkRWmTDhh6yFdRisvGmoS7GIyPZGzXA9abjVBEhKTxCwKPZdKVIgRpTidmrwzB9XBAgnbweNEFrYUyoHRye3dEF28ubpfKepLpiWIvgEo7X0MqxgLjFBJ85plbpinzutIA8Mv-R0EY7zMQvR4bvfjLyQ7H5bR3aNACimkg8Jra" />
+                    <span class="difficulty-badge difficulty-moderate">Moderate</span>
+                </div>
+                <div class="plant-content">
+                    <h4>Eggplant</h4>
+                    <p class="plant-latin">Solanum melongena</p>
+                    <div class="plant-footer">
+                        <span class="plant-tag">Vegetable</span>
+                        <button class="material-symbols-outlined plant-arrow" type="button" aria-label="Open Eggplant">
+                            arrow_forward
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Plant Card 4 -->
+            <div class="plant-card botanical-shadow">
+                <div class="plant-image-wrap">
+                    <img class="plant-image"
+                        data-alt="Small spicy jalapeño peppers on a bush, deep green colors with natural highlights, organic garden setting"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDU-lpH49X0mSX2XeE0wssmTVxpQOnu-YzjRKUn6npF7wT6htmS9psxYOhkX0y-AAqGh07q7rQaoG9MN6ItdUnVVYikgZPgOIzL5XW6iOxd8FR2s5hDfGpKvhmex1vmExFBn2sQ1IWj-IerUnISJGmj01qtrikstLUstdVYCwm0wjtbiz5hyKr2a_Qfn2uYl6jcgAKZCc7JkSRIZ19814P9rmCfMM2J6qyR8l33fu6xYlUEmcvtRAESR_LE_sVQkxcpLOuVW5ufrTQh" />
+                    <span class="difficulty-badge difficulty-easy">Easy</span>
+                </div>
+                <div class="plant-content">
+                    <h4>Jalapeño</h4>
+                    <p class="plant-latin">Capsicum annuum 'Jalapeño'</p>
+                    <div class="plant-footer">
+                        <span class="plant-tag">Spice</span>
+                        <button class="material-symbols-outlined plant-arrow" type="button" aria-label="Open Jalapeño">
+                            arrow_forward
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Plant Card 5 -->
+            <div class="plant-card botanical-shadow">
+                <div class="plant-image-wrap">
+                    <img class="plant-image"
+                        data-alt="Freshly harvested Yukon Gold potatoes in a rustic basket, warm earthy tones, bright natural lighting"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUfPyQ6Z6W9aCCj2dyMtjFsgMCegLak0-KtN2qQGnTq53CHZWvD28X7PhXnuvBnT9XHOUzSsugSN6iuul4nXjiErvbTnlHXMVm3nPFhKUqSme7wNPdoJuCoaqv3UVSmx6bb0DoNsfCkof8wqcJrMw_wMVkSgOP0mj-hkZQqbI8_dBDa_cEj2dz9K0k4Ak5zeW7eSbj4a7u-OtTUs04uHmZyFnH4KpANxef8qf16dTj4LOwlYwY7uozOoXq1TqVuffYQ9I2O3HS1A0l" />
+                    <span class="difficulty-badge difficulty-moderate">Moderate</span>
+                </div>
+                <div class="plant-content">
+                    <h4>Yukon Gold Potato</h4>
+                    <p class="plant-latin">Solanum tuberosum</p>
+                    <div class="plant-footer">
+                        <span class="plant-tag">Root Crop</span>
+                        <button class="material-symbols-outlined plant-arrow" type="button"
+                            aria-label="Open Yukon Gold Potato">
+                            arrow_forward
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- FAB for New Scan -->
+    <button class="fab-button botanical-shadow" type="button" aria-label="New scan">
+        <span class="material-symbols-outlined icon-filled" data-icon="photo_camera"
+            style="font-size: 32px;">photo_camera</span>
+    </button>
+    <!-- BottomNavBar -->
+    <nav class="bottom-nav">
+        <a class="nav-item" href="index.html">
+            <span class="material-symbols-outlined" data-icon="home">home</span>
+            <span class="nav-label">Home</span>
+        </a>
+        <a class="nav-item" href="history.html">
+            <span class="material-symbols-outlined" data-icon="history">history</span>
+            <span class="nav-label">History</span>
+        </a>
+        <a class="nav-item nav-item-active" href="library.html">
+            <span class="material-symbols-outlined icon-filled" data-icon="grid_view">grid_view</span>
+            <span class="nav-label">Library</span>
+        </a>
+    </nav>
+</body>
+
+</html>
