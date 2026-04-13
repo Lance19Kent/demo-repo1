@@ -7,7 +7,7 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>About PlantCam</title>
-    <link href="assets/fonts/inter.css" rel="stylesheet" />
+    <link href="inter.css" rel="stylesheet" />
     <style>
         :root {
             --color-primary: #006e28;
@@ -208,6 +208,10 @@
             color: var(--color-on-background);
         }
 
+        .info-value+.info-label {
+            margin-top: 12px;
+        }
+
         .info-icon {
             color: var(--color-outline-variant);
             flex-shrink: 0;
@@ -316,7 +320,7 @@
             </button>
             <div id="settingsMenu" class="settings-menu" role="menu" aria-label="Settings menu">
                 <a id="aboutAppLink" href="about.html" role="menuitem">About App</a>
-                <a id="helpLink" href="#help-guide" role="menuitem">Help/Guide</a>
+                <a id="helpLink" href="help.html" role="menuitem">Help/Guide</a>
             </div>
         </div>
     </header>
@@ -326,7 +330,7 @@
             <div class="intro-media">
                 <img alt="Botanical icon" class="intro-image"
                     data-alt="Macro photography of a vibrant green monstera leaf with soft natural lighting and morning dew drops on a white background"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBiyTkd1RbsKSLKNc0ypep53J9OhiMrySMRXZOC_FctR6YCEWo8YCMcd_dL-PuYJtObPPir58ZXPyNWS5ocp8qXvuUN5I78G6O3xtFASVrWiD5NamYGgwQ8we9S-nzyD0V4dGxTmiPpfIciJXXodGuN1x3cyxbnnqj_8uxpoQBmw5LGqB0-SOX9N_0Ml8UzhCJmm4svXxsFhZ4OYGXmZ3R2lIMnXr4itQwlZsyIt4CCRBoFqHwsFL5KkOxudjnpqNwIZtwFLwcXjhh" />
+                    src="about_image.png" />
             </div>
             <h2 class="page-title">About PlantCam</h2>
             <p class="page-subtitle">Your botanical companion in the digital age.</p>
@@ -349,6 +353,10 @@
                 <div class="info-copy">
                     <p class="info-label">Developer</p>
                     <p class="info-value">Lance Kent Geoffrey B. Magollado</p>
+                    <p class="info-label">Researcher</p>
+                    <p class="info-value">Ma. Alexsandra Mopon</p>
+                    <p class="info-label">UI/UX Designer</p>
+                    <p class="info-value">Arth Angelo Mendoza</p>
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                     fill=currentColor class="info-icon">

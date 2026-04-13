@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>PlantCam - Help Guide</title>
+    <link href="inter.css" rel="stylesheet" />
+    <style>
+        :root {
+            --color-primary: #006e28;
+            --color-primary-container: #34c759;
+            --color-secondary-container: #b9f474;
+            --color-secondary-text: #437000;
+            --color-tertiary: #9c413d;
+            --color-tertiary-container: #ff8e86;
+            --color-on-background: #131e14;
+            --color-on-surface-variant: #3d4a3c;
+            --color-outline-variant: #bccbb8;
+            --color-surface-container: #e4f2e2;
+            --color-surface-low: #eaf7e7;
+            --color-surface-high: #deecdc;
+            --color-surface-highest: #d8e6d6;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            color: var(--color-on-background);
+            min-height: max(884px, 100dvh);
+        }
+
+        .top-app-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            height: 64px;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+        }
+
+        .brand-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .brand-title {
+            margin: 0;
+            font-size: 1.125rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--color-primary);
+        }
+
+        .top-menu-btn {
+            border: 0;
+            background: transparent;
+            color: rgba(19, 30, 20, 0.6);
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .top-menu-btn:active {
+            transform: scale(0.95);
+        }
+
+        .top-menu-wrap {
+            position: relative;
+        }
+
+        .settings-menu {
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 0;
+            width: 172px;
+            padding: 6px;
+            border-radius: 14px;
+            border: 1px solid rgba(188, 203, 184, 0.5);
+            background: #ffffff;
+            box-shadow: 0 12px 28px rgba(19, 30, 20, 0.14);
+            display: none;
+            z-index: 70;
+            font-family: inherit;
+        }
+
+        .settings-menu.is-open {
+            display: block;
+        }
+
+        .settings-menu a {
+            display: block;
+            width: 100%;
+            border-radius: 10px;
+            padding: 10px 12px;
+            text-align: left;
+            font-size: 0.875rem;
+            font-family: inherit;
+            font-weight: 500;
+            line-height: 1.35;
+            color: var(--color-on-background);
+            background: transparent;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            text-decoration: none;
+        }
+
+        .settings-menu a:hover {
+            background: var(--color-surface-low);
+        }
+
+        .main-content {
+            width: 100%;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 84px 24px 36px;
+        }
+
+        .intro {
+            margin-bottom: 28px;
+        }
+
+        .intro h1 {
+            margin: 0 0 8px;
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .intro p {
+            margin: 0;
+            color: var(--color-on-surface-variant);
+            font-size: 1rem;
+        }
+
+        .hero {
+            margin-bottom: 32px;
+            border-radius: 32px;
+            overflow: hidden;
+            background: var(--color-surface-low);
+            position: relative;
+            aspect-ratio: 16 / 9;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+            display: block;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 110, 40, 0.2), transparent);
+        }
+
+        .disclaimer {
+            margin-bottom: 32px;
+            padding: 20px;
+            border-radius: 16px;
+            background: rgba(255, 142, 134, 0.2);
+            border: 1px solid rgba(255, 142, 134, 0.35);
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .disclaimer p {
+            margin: 0;
+            font-size: 0.875rem;
+            line-height: 1.6;
+            color: #772523;
+            font-weight: 500;
+        }
+
+        .section {
+            margin-bottom: 36px;
+        }
+
+        .section-title {
+            margin: 0 0 20px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tips-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .tip-card {
+            padding: 24px;
+            border-radius: 24px;
+            background: #ffffff;
+            border: 1px solid rgba(188, 203, 184, 0.32);
+        }
+
+        .tip-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .tip-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 16px;
+            background: rgba(0, 110, 40, 0.1);
+            color: var(--color-primary);
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+        }
+
+        .tip-copy h3 {
+            margin: 0 0 4px;
+            font-size: 1.125rem;
+            font-weight: 700;
+        }
+
+        .tip-copy p {
+            margin: 0;
+            color: var(--color-on-surface-variant);
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
+        .species-head {
+            margin-bottom: 16px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .species-head h2 {
+            margin: 0 0 4px;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .species-sub {
+            margin: 0;
+            font-size: 10px;
+            color: var(--color-on-surface-variant);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+        }
+
+        .view-all {
+            text-decoration: none;
+            color: var(--color-primary);
+            font-size: 0.875rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .chip-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border-radius: 999px;
+            background: var(--color-secondary-container);
+            color: var(--color-secondary-text);
+            font-size: 0.875rem;
+            font-weight: 700;
+        }
+
+        .cta-card {
+            margin-bottom: 28px;
+            padding: 32px;
+            border-radius: 32px;
+            background: var(--color-primary);
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            margin: 0 0 10px;
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+
+        .cta-text {
+            margin: 0 0 16px;
+            color: rgba(255, 255, 255, 0.82);
+            line-height: 1.65;
+            font-size: 0.95rem;
+        }
+
+        .cta-btn {
+            border: 0;
+            border-radius: 999px;
+            padding: 12px 22px;
+            background: #ffffff;
+            color: var(--color-primary);
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .cta-art {
+            position: absolute;
+            right: -16px;
+            bottom: -16px;
+            opacity: 0.1;
+        }
+
+        .page-footer {
+            width: 100%;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px 28px;
+        }
+
+        .close-btn {
+            width: 100%;
+            border: 0;
+            border-radius: 999px;
+            padding: 16px 24px;
+            background: var(--color-surface-highest);
+            color: var(--color-primary);
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .close-btn:hover {
+            opacity: 0.9;
+        }
+
+        .close-btn:active {
+            transform: scale(0.98);
+        }
+
+        @media (max-width: 420px) {
+            .main-content {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+
+            .page-footer {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .cta-card {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- TopAppBar -->
+    <header class="top-app-bar">
+        <div class="brand-wrap">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                fill="var(--color-primary)">
+                <path
+                    d="M216-176q-45-45-70.5-104T120-402q0-63 24-124.5T222-642q35-35 86.5-60t122-39.5Q501-756 591.5-759t202.5 7q8 106 5 195t-16.5 160.5q-13.5 71.5-38 125T684-182q-53 53-112.5 77.5T450-80q-65 0-127-25.5T216-176Zm112-16q29 17 59.5 24.5T450-160q46 0 91-18.5t86-59.5q18-18 36.5-50.5t32-85Q709-426 716-500.5t2-177.5q-49-2-110.5-1.5T485-670q-61 9-116 29t-90 55q-45 45-62 89t-17 85q0 59 22.5 103.5T262-246q42-80 111-153.5T534-520q-72 63-125.5 142.5T328-192Zm0 0Zm0 0Z" />
+            </svg>
+            <h1 class="brand-title">PlantCam</h1>
+        </div>
+        <div class="top-menu-wrap">
+            <button id="settingsToggle" class="top-menu-btn" type="button" aria-label="Open menu" aria-expanded="false"
+                aria-controls="settingsMenu">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                    fill="var(--color-primary)">
+                    <path
+                        d="m370-80-16-128q-13-5-24.5-12T307-235l-119 50L78-375l103-78q-1-7-1-13.5v-27q0-6.5 1-13.5L78-585l110-190 119 50q11-8 23-15t24-12l16-128h220l16 128q13 5 24.5 12t22.5 15l119-50 110 190-103 78q1 7 1 13.5v27q0 6.5-2 13.5l103 78-110 190-118-50q-11 8-23 15t-24 12L590-80H370Zm70-80h79l14-106q31-8 57.5-23.5T639-327l99 41 39-68-86-65q5-14 7-29.5t2-31.5q0-16-2-31.5t-7-29.5l86-65-39-68-99 42q-22-23-48.5-38.5T533-694l-13-106h-79l-14 106q-31 8-57.5 23.5T321-633l-99-41-39 68 86 64q-5 15-7 30t-2 32q0 16 2 31t7 30l-86 65 39 68 99-42q22 23 48.5 38.5T427-266l13 106Zm42-180q58 0 99-41t41-99q0-58-41-99t-99-41q-59 0-99.5 41T342-480q0 58 40.5 99t99.5 41Zm-2-140Z" />
+                </svg>
+            </button>
+            <div id="settingsMenu" class="settings-menu" role="menu" aria-label="Settings menu">
+                <a id="aboutAppLink" href="about.html" role="menuitem">About App</a>
+                <a id="helpLink" href="help.html" role="menuitem">Help/Guide</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="intro">
+            <h1>Scanning Guide</h1>
+            <p>Master the art of plant diagnosis with our expert tips.</p>
+        </section>
+
+        <section class="hero">
+            <img alt="Plant Scanning"
+                data-alt="a macro photograph of a healthy monstera leaf with soft morning sunlight streaming through a window, editorial style"
+                src="help_image.png" />
+            <div class="hero-overlay"></div>
+        </section>
+
+        <section class="disclaimer">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                fill="var(--color-tertiary)">
+                <path
+                    d="M480-280q17 0 28.5-11.5T520-320q0-17-11.5-28.5T480-360q-17 0-28.5 11.5T440-320q0 17 11.5 28.5T480-280Zm-40-160h80v-200h-80v200Zm40 360q-83 0-156-31.5t-127-85.5q-54-54-85.5-127T80-480q0-83 31.5-156t85.5-127q54-54 127-85.5T480-880q83 0 156 31.5t127 85.5q54 54 85.5 127T880-480q0 83-31.5 156t-85.5 127q-54 54-127 85.5T480-80Z" />
+            </svg>
+            <p>
+                AI Disclaimer: <span class="font-bold">PlantCam</span> provides AI-assisted diagnoses, but it is not
+                100% accurate. Please use it as a guide alongside professional agricultural advice.
+            </p>
+        </section>
+
+        <section class="section" id="help-guide">
+            <h2 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                    fill=var(--color-primary)>
+                    <path
+                        d="M423.5-103.5Q400-127 400-160h160q0 33-23.5 56.5T480-80q-33 0-56.5-23.5ZM320-200v-80h320v80H320Zm10-120q-69-41-109.5-110T180-580q0-125 87.5-212.5T480-880q125 0 212.5 87.5T780-580q0 81-40.5 150T630-320H330Zm24-80h252q45-32 69.5-79T700-580q0-92-64-156t-156-64q-92 0-156 64t-64 156q0 54 24.5 101t69.5 79Zm126 0Z" />
+                </svg>
+                Expert Scanning Tips
+            </h2>
+            <div class="tips-list">
+                <article class="tip-card">
+                    <div class="tip-row">
+                        <div class="tip-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"
+                                fill=currentColor>
+                                <path
+                                    d="M440-800v-120h80v120h-80Zm0 760v-120h80v120h-80Zm360-400v-80h120v80H800Zm-760 0v-80h120v80H40Zm708-252-56-56 70-72 58 58-72 70ZM198-140l-58-58 72-70 56 56-70 72Zm564 0-70-72 56-56 72 70-58 58ZM212-692l-72-70 58-58 70 72-56 56Zm98 382q-70-70-70-170t70-170q70-70 170-70t170 70q70 70 70 170t-70 170q-70 70-170 70t-170-70Zm283.5-56.5Q640-413 640-480t-46.5-113.5Q547-640 480-640t-113.5 46.5Q320-547 320-480t46.5 113.5Q413-320 480-320t113.5-46.5ZM480-480Z" />
+                            </svg>
+                        </div>
+                        <div class="tip-copy">
+                            <h3>Optimal Lighting</h3>
+                            <p>
+                                Avoid harsh shadows or direct midday sun. Soft, indirect natural light works best for
+                                capturing texture and color accuracy.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="tip-card">
+                    <div class="tip-row">
+                        <div class="tip-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"
+                                fill=currentColor>
+                                <path
+                                    d="M367-367q-47-47-47-113t47-113q47-47 113-47t113 47q47 47 47 113t-47 113q-47 47-113 47t-113-47Zm169.5-56.5Q560-447 560-480t-23.5-56.5Q513-560 480-560t-56.5 23.5Q400-513 400-480t23.5 56.5Q447-400 480-400t56.5-23.5ZM480-480ZM200-120q-33 0-56.5-23.5T120-200v-160h80v160h160v80H200Zm400 0v-80h160v-160h80v160q0 33-23.5 56.5T760-120H600ZM120-600v-160q0-33 23.5-56.5T200-840h160v80H200v160h-80Zm640 0v-160H600v-80h160q33 0 56.5 23.5T840-760v160h-80Z" />
+                            </svg>
+                        </div>
+                        <div class="tip-copy">
+                            <h3>Isolate the Leaf</h3>
+                            <p>
+                                Focus on a single, representative leaf. Ensure the background is simple or slightly
+                                blurred to help the AI focus on the plant.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="tip-card">
+                    <div class="tip-row">
+                        <div class="tip-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"
+                                fill=currentColor>
+                                <path
+                                    d="M607.5-372.5Q660-425 660-500t-52.5-127.5Q555-680 480-680t-127.5 52.5Q300-575 300-500t52.5 127.5Q405-320 480-320t127.5-52.5Zm-204-51Q372-455 372-500t31.5-76.5Q435-608 480-608t76.5 31.5Q588-545 588-500t-31.5 76.5Q525-392 480-392t-76.5-31.5ZM214-281.5Q94-363 40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200q-146 0-266-81.5ZM480-500Zm207.5 160.5Q782-399 832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280q113 0 207.5-59.5Z" />
+                            </svg>
+                        </div>
+                        <div class="tip-copy">
+                            <h3>Keep it Clear</h3>
+                            <p>
+                                Hold your device steady. Blurry images significantly reduce diagnosis accuracy. Wipe
+                                your camera lens before scanning.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="cta-card">
+            <div class="cta-content">
+                <h3 class="cta-title">Become a Contributor</h3>
+                <p class="cta-text">Help us improve by submitting verified photos of rare
+                    species. Your contributions make the Botanical Atelier smarter for everyone.</p>
+                <button class="cta-btn" type="button">Learn More</button>
+            </div>
+            <div class="cta-art">
+                <svg xmlns="http://www.w3.org/2000/svg" height="120px" viewBox="0 -960 960 960" width="120px"
+                    fill="#ffffff">
+                    <path
+                        d="M480-120q-116 0-198-82t-82-198q0-96 59.5-170.5T420-668v-52q0-25 17.5-42.5T480-780q25 0 42.5 17.5T540-720v52q101 25 160.5 99.5T760-400q0 116-82 198t-198 82Zm0-80q83 0 141.5-58.5T680-400q0-83-58.5-141.5T480-600q-83 0-141.5 58.5T280-400q0 83 58.5 141.5T480-200Z" />
+                </svg>
+            </div>
+        </section>
+    </main>
+
+    <footer class="page-footer">
+        <button class="close-btn" type="button" onclick="history.back()">
+            Close
+        </button>
+    </footer>
+
+    <script>
+        (function () {
+            var settingsToggle = document.getElementById('settingsToggle');
+            var settingsMenu = document.getElementById('settingsMenu');
+
+            if (!settingsToggle || !settingsMenu) {
+                return;
+            }
+
+            function closeMenu() {
+                settingsMenu.classList.remove('is-open');
+                settingsToggle.setAttribute('aria-expanded', 'false');
+            }
+
+            function openMenu() {
+                settingsMenu.classList.add('is-open');
+                settingsToggle.setAttribute('aria-expanded', 'true');
+            }
+
+            settingsToggle.addEventListener('click', function (event) {
+                event.stopPropagation();
+                if (settingsMenu.classList.contains('is-open')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+
+            settingsMenu.addEventListener('click', function (event) {
+                event.stopPropagation();
+            });
+
+            document.addEventListener('click', closeMenu);
+
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape') {
+                    closeMenu();
+                }
+            });
+
+            var menuLinks = settingsMenu.querySelectorAll('a');
+            for (var i = 0; i < menuLinks.length; i++) {
+                menuLinks[i].addEventListener('click', closeMenu);
+            }
+        })();
+    </script>
+</body>
+
+</html>
