@@ -11,9 +11,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
         rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-        rel="stylesheet" />
     <style>
         :root {
             --color-primary: #006e28;
@@ -214,7 +211,7 @@
             border-radius: 12px;
             background: var(--color-surface-highest);
             color: var(--color-on-surface);
-            font-size: 1rem;
+            font-size: .9rem;
             outline: none;
             transition: box-shadow 0.2s ease, background 0.2s ease;
         }
@@ -238,7 +235,7 @@
         .chip {
             border: 0;
             border-radius: 999px;
-            padding: 8px 24px;
+            padding: 10px 24px;
             font-size: 0.875rem;
             font-weight: 600;
             white-space: nowrap;
@@ -482,7 +479,11 @@
     <!-- TopAppBar -->
     <header class="top-app-bar">
         <div class="brand-wrap">
-            <span class="material-symbols-outlined brand-icon" data-icon="eco">eco</span>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                fill=var(--color-primary)>
+                <path
+                    d="M216-176q-45-45-70.5-104T120-402q0-63 24-124.5T222-642q35-35 86.5-60t122-39.5Q501-756 591.5-759t202.5 7q8 106 5 195t-16.5 160.5q-13.5 71.5-38 125T684-182q-53 53-112.5 77.5T450-80q-65 0-127-25.5T216-176Zm112-16q29 17 59.5 24.5T450-160q46 0 91-18.5t86-59.5q18-18 36.5-50.5t32-85Q709-426 716-500.5t2-177.5q-49-2-110.5-1.5T485-670q-61 9-116 29t-90 55q-45 45-62 89t-17 85q0 59 22.5 103.5T262-246q42-80 111-153.5T534-520q-72 63-125.5 142.5T328-192Zm0 0Zm0 0Z" />
+            </svg>
             <h1 class="brand-title">PlantCam</h1>
         </div>
         <!-- <div>
@@ -511,7 +512,11 @@
         <!-- Search & Filter -->
         <section class="controls-section">
             <div class="search-wrap">
-                <span class="material-symbols-outlined search-icon" data-icon="search">search</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="search-icon" height="24px" viewBox="0 -960 960 960"
+                    width="24px" fill=currentColor>
+                    <path
+                        d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
+                </svg>
                 <input class="search-input" placeholder="Search plant species..." type="text" />
             </div>
             <div class="chip-row hide-scrollbar">
@@ -537,9 +542,11 @@
                     <p class="plant-latin">Solanum lycopersicum var. cerasiforme</p>
                     <div class="plant-footer">
                         <span class="plant-tag">Fruit Bearing</span>
-                        <button class="material-symbols-outlined plant-arrow" type="button"
-                            aria-label="Open Cherry Tomato">
-                            arrow_forward
+                        <button class="plant-arrow" type="button" aria-label="Open Cherry Tomato">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                fill=currentColor>
+                                <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+                            </svg>
                         </button>
                     </div>
                 </div>
@@ -557,9 +564,11 @@
                     <p class="plant-latin">Capsicum annuum</p>
                     <div class="plant-footer">
                         <span class="plant-tag">Vegetable</span>
-                        <button class="material-symbols-outlined plant-arrow" type="button"
-                            aria-label="Open Bell Pepper">
-                            arrow_forward
+                        <button class="plant-arrow" type="button" aria-label="Open Cherry Tomato">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                fill=currentColor>
+                                <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+                            </svg>
                         </button>
                     </div>
                 </div>
@@ -577,8 +586,11 @@
                     <p class="plant-latin">Solanum melongena</p>
                     <div class="plant-footer">
                         <span class="plant-tag">Vegetable</span>
-                        <button class="material-symbols-outlined plant-arrow" type="button" aria-label="Open Eggplant">
-                            arrow_forward
+                        <button class="plant-arrow" type="button" aria-label="Open Cherry Tomato">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                fill=currentColor>
+                                <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+                            </svg>
                         </button>
                     </div>
                 </div>
@@ -596,8 +608,11 @@
                     <p class="plant-latin">Capsicum annuum 'Jalapeño'</p>
                     <div class="plant-footer">
                         <span class="plant-tag">Spice</span>
-                        <button class="material-symbols-outlined plant-arrow" type="button" aria-label="Open Jalapeño">
-                            arrow_forward
+                        <button class="plant-arrow" type="button" aria-label="Open Cherry Tomato">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                fill=currentColor>
+                                <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+                            </svg>
                         </button>
                     </div>
                 </div>
@@ -615,9 +630,11 @@
                     <p class="plant-latin">Solanum tuberosum</p>
                     <div class="plant-footer">
                         <span class="plant-tag">Root Crop</span>
-                        <button class="material-symbols-outlined plant-arrow" type="button"
-                            aria-label="Open Yukon Gold Potato">
-                            arrow_forward
+                        <button class="plant-arrow" type="button" aria-label="Open Cherry Tomato">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                fill=currentColor>
+                                <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+                            </svg>
                         </button>
                     </div>
                 </div>
@@ -626,21 +643,35 @@
     </main>
     <!-- FAB for New Scan -->
     <button class="fab-button botanical-shadow" type="button" aria-label="New scan">
-        <span class="material-symbols-outlined icon-filled" data-icon="photo_camera"
-            style="font-size: 32px;">photo_camera</span>
+        <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#e3e3e3">
+            <path
+                d="M480-260q75 0 127.5-52.5T660-440q0-75-52.5-127.5T480-620q-75 0-127.5 52.5T300-440q0 75 52.5 127.5T480-260Zm0-80q-42 0-71-29t-29-71q0-42 29-71t71-29q42 0 71 29t29 71q0 42-29 71t-71 29ZM160-120q-33 0-56.5-23.5T80-200v-480q0-33 23.5-56.5T160-760h126l74-80h240l74 80h126q33 0 56.5 23.5T880-680v480q0 33-23.5 56.5T800-120H160Zm0-80h640v-480H638l-73-80H395l-73 80H160v480Zm320-240Z" />
+        </svg>
     </button>
     <!-- BottomNavBar -->
     <nav class="bottom-nav">
         <a class="nav-item" href="index.html">
-            <span class="material-symbols-outlined" data-icon="home">home</span>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                fill=currentColor>
+                <path
+                    d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z" />
+            </svg>
             <span class="nav-label">Home</span>
         </a>
         <a class="nav-item" href="history.html">
-            <span class="material-symbols-outlined" data-icon="history">history</span>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                fill=currentColor>
+                <path
+                    d="M480-120q-138 0-240.5-91.5T122-440h82q14 104 92.5 172T480-200q117 0 198.5-81.5T760-480q0-117-81.5-198.5T480-760q-69 0-129 32t-101 88h110v80H120v-240h80v94q51-64 124.5-99T480-840q75 0 140.5 28.5t114 77q48.5 48.5 77 114T840-480q0 75-28.5 140.5t-77 114q-48.5 48.5-114 77T480-120Zm112-192L440-464v-216h80v184l128 128-56 56Z" />
+            </svg>
             <span class="nav-label">History</span>
         </a>
         <a class="nav-item nav-item-active" href="library.html">
-            <span class="material-symbols-outlined icon-filled" data-icon="grid_view">grid_view</span>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                fill=currentColor>
+                <path
+                    d="M120-520v-320h320v320H120Zm0 400v-320h320v320H120Zm400-400v-320h320v320H520Zm0 400v-320h320v320H520ZM200-600h160v-160H200v160Zm400 0h160v-160H600v160Zm0 400h160v-160H600v160Zm-400 0h160v-160H200v160Zm400-400Zm0 240Zm-240 0Zm0-240Z" />
+            </svg>
             <span class="nav-label">Library</span>
         </a>
     </nav>
