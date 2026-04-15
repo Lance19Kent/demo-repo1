@@ -26,6 +26,13 @@
 
         * {
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        a:focus,
+        button:focus,
+        input:focus {
+            outline: none;
         }
 
         html,
@@ -488,10 +495,156 @@
             letter-spacing: 0.08em;
         }
 
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        .prescan-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 120;
+            display: none;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 12px;
+            background: rgba(19, 30, 20, 0.45);
+            backdrop-filter: blur(4px);
+        }
+
+        .prescan-modal.is-open {
+            display: flex;
+        }
+
+        .prescan-dialog {
+            width: min(100%, 420px);
+            max-height: calc(100dvh - 24px);
+            overflow-y: auto;
+            border-radius: 24px;
+            background: #ffffff;
+            border: 1px solid rgba(188, 203, 184, 0.4);
+            padding: 20px;
+        }
+
+        .prescan-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .prescan-title {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .prescan-close-btn {
+            width: 36px;
+            height: 36px;
+            border: 0;
+            border-radius: 50%;
+            background: var(--color-surface-high);
+            color: var(--color-on-surface-variant);
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+        }
+
+        .prescan-visual {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-top: 14px;
+        }
+
+        .prescan-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .prescan-visual::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(19, 30, 20, 0.35), transparent 65%);
+        }
+
+        .prescan-tips {
+            margin-top: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .prescan-tip {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            border-radius: 14px;
+            background: var(--color-surface-low);
+        }
+
+        .prescan-tip-index {
+            padding: 12px;
+            flex-shrink: 0;
+            border-radius: 10px;
+            background: rgba(0, 110, 40, 0.14);
+            color: var(--color-primary);
+            font-size: 0.875rem;
+            font-weight: 700;
+            display: grid;
+            place-items: center;
+        }
+
+        .prescan-tip h3 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .prescan-tip p {
+            margin: 3px 0 0;
+            font-size: 0.8125rem;
+            color: var(--color-on-surface-variant);
+            line-height: 1.45;
+        }
+
+        .prescan-continue-btn {
+            width: 100%;
+            margin-top: 16px;
+            height: 56px;
+            border: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border-radius: 999px;
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-container));
+            transition: transform 0.2s ease;
+        }
+
+        .prescan-continue-btn:active,
+        .prescan-close-btn:active {
+            transform: scale(0.98);
+        }
+
         @media (min-width: 768px) {
             .main-content {
                 padding-left: 40px;
                 padding-right: 40px;
+            }
+
+            .prescan-modal {
+                align-items: center;
             }
         }
 
@@ -544,7 +697,7 @@
         </section>
         <!-- Main Action Area -->
         <section class="action-section">
-            <button class="scan-button botanical-shadow" type="button">
+            <button id="scanBtn" class="scan-button botanical-shadow" type="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="lucide lucide-camera-icon lucide-camera">
@@ -695,6 +848,74 @@
             <span class="nav-label">Library</span>
         </a>
     </nav>
+
+    <div id="preScanModal" class="prescan-modal" role="dialog" aria-modal="true" aria-labelledby="preScanTitle"
+        aria-hidden="true">
+        <div class="prescan-dialog botanical-shadow">
+            <div class="prescan-header">
+                <h2 id="preScanTitle" class="prescan-title">Before You Scan</h2>
+                <button id="preScanCloseBtn" class="prescan-close-btn" type="button" aria-label="Close pre-scan tips">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"
+                        fill="currentColor">
+                        <path
+                            d="m249-207-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="prescan-visual">
+                <img alt="Plant scanning" src="daily-botanical.jpg" />
+            </div>
+
+            <div class="prescan-tips">
+                <article class="prescan-tip">
+                    <span class="prescan-tip-index"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                            viewBox="0 -960 960 960" width="24px" fill=currentColor>
+                            <path
+                                d="M440-760v-160h80v160h-80Zm266 110-55-55 112-115 56 57-113 113Zm54 210v-80h160v80H760ZM440-40v-160h80v160h-80ZM254-652 140-763l57-56 113 113-56 54Zm508 512L651-255l54-54 114 110-57 59ZM40-440v-80h160v80H40Zm157 300-56-57 112-112 29 27 29 28-114 114Zm113-170q-70-70-70-170t70-170q70-70 170-70t170 70q70 70 70 170t-70 170q-70 70-170 70t-170-70Zm283-57q47-47 47-113t-47-113q-47-47-113-47t-113 47q-47 47-47 113t47 113q47 47 113 47t113-47ZM480-480Z" />
+                        </svg></span>
+                    <div>
+                        <h3>Good Lighting</h3>
+                        <p>Place the leaf in bright, natural light so details are clear.</p>
+                    </div>
+                </article>
+                <article class="prescan-tip">
+                    <span class="prescan-tip-index"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                            viewBox="0 -960 960 960" width="24px" fill=currentColor>
+                            <path
+                                d="M395-395q-35-35-35-85t35-85q35-35 85-35t85 35q35 35 35 85t-35 85q-35 35-85 35t-85-35Zm113.5-56.5Q520-463 520-480t-11.5-28.5Q497-520 480-520t-28.5 11.5Q440-497 440-480t11.5 28.5Q463-440 480-440t28.5-11.5ZM200-120q-33 0-56.5-23.5T120-200v-160h80v160h160v80H200Zm400 0v-80h160v-160h80v160q0 33-23.5 56.5T760-120H600ZM120-600v-160q0-33 23.5-56.5T200-840h160v80H200v160h-80Zm640 0v-160H600v-80h160q33 0 56.5 23.5T840-760v160h-80Z" />
+                        </svg></span>
+                    <div>
+                        <h3>Center the Leaf</h3>
+                        <p>Focus on a single leaf and avoid cluttered backgrounds.</p>
+                    </div>
+                </article>
+                <article class="prescan-tip">
+                    <span class="prescan-tip-index"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                            viewBox="0 -960 960 960" width="24px" fill=currentColor>
+                            <path
+                                d="M240-160v-640 640ZM637-40q-26 0-49-10.5T548-80L346-322l45-46q18-18 44-22.5t49 7.5l116 58v-355h80q66 0 113 47t47 113v320q0 66-47 113T680-40h-43ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h360q33 0 56.5 23.5T680-800v120h-80v-120H240v640h241l67 80H240Zm208.5-611.5Q460-703 460-720t-11.5-28.5Q437-760 420-760t-28.5 11.5Q380-737 380-720t11.5 28.5Q403-680 420-680t28.5-11.5ZM637-120h43q33 0 56.5-23t23.5-57v-320q0-33-23.5-56.5T680-600v405L468-302l138 168q6 7 14 10.5t17 3.5Z" />
+                        </svg></span>
+                    <div>
+                        <h3>Hold Steady</h3>
+                        <p>Keep your phone still for a sharp, accurate scan result.</p>
+                    </div>
+                </article>
+            </div>
+
+            <button id="startCameraBtn" class="prescan-continue-btn" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px"
+                    fill="#e3e3e3">
+                    <path
+                        d="M480-260q75 0 127.5-52.5T660-440q0-75-52.5-127.5T480-620q-75 0-127.5 52.5T300-440q0 75 52.5 127.5T480-260Zm0-80q-42 0-71-29t-29-71q0-42 29-71t71-29q42 0 71 29t29 71q0 42-29 71t-71 29ZM160-120q-33 0-56.5-23.5T80-200v-480q0-33 23.5-56.5T160-760h126l74-80h240l74 80h126q33 0 56.5 23.5T880-680v480q0 33-23.5 56.5T800-120H160Zm0-80h640v-480H638l-73-80H395l-73 80H160v480Zm320-240Z" />
+                </svg>
+                <span>
+                    Got it, Open Camera
+                </span>
+            </button>
+        </div>
+    </div>
+
     <script>
         (function () {
             var settingsToggle = document.getElementById('settingsToggle');
@@ -740,6 +961,67 @@
                 menuLinks[i].addEventListener('click', closeMenu);
             }
         })();
+
+        var scanButton = document.getElementById('scanBtn');
+        var preScanModal = document.getElementById('preScanModal');
+        var preScanCloseButton = document.getElementById('preScanCloseBtn');
+        var startCameraButton = document.getElementById('startCameraBtn');
+
+        function openPreScanModal() {
+            if (!preScanModal) {
+                return;
+            }
+
+            preScanModal.classList.add('is-open');
+            preScanModal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('modal-open');
+        }
+
+        function closePreScanModal() {
+            if (!preScanModal) {
+                return;
+            }
+
+            preScanModal.classList.remove('is-open');
+            preScanModal.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('modal-open');
+        }
+
+        function triggerCamera() {
+            closePreScanModal();
+
+            if (window.AppInventor) {
+                window.AppInventor.setWebViewString('OPEN_CAMERA');
+            } else {
+                alert('App Inventor bridge not found. Camera only works on the phone!');
+            }
+        }
+
+        if (scanButton) {
+            scanButton.addEventListener('click', openPreScanModal);
+        }
+
+        if (preScanCloseButton) {
+            preScanCloseButton.addEventListener('click', closePreScanModal);
+        }
+
+        if (startCameraButton) {
+            startCameraButton.addEventListener('click', triggerCamera);
+        }
+
+        if (preScanModal) {
+            preScanModal.addEventListener('click', function (event) {
+                if (event.target === preScanModal) {
+                    closePreScanModal();
+                }
+            });
+        }
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                closePreScanModal();
+            }
+        });
     </script>
 </body>
 
